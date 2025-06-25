@@ -6,12 +6,18 @@ export type ButtonType = {
 	hover: string;
 };
 
+export type DropdownType = {
+	label: string;
+	value: string | number;
+};
+
 export type InputType = {
-	type: "text" | "textarea";
+	type: "text" | "textarea" | "combo" | "date";
 	name: string;
 	label: string;
 	placeholder: string;
 	required: boolean;
+	items?: DropdownType[];
 	rules?:
 		| Omit<
 				RegisterOptions<any, string>,

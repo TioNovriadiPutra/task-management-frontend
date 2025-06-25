@@ -1,5 +1,6 @@
 import useTaskModel from "@models/taskModel";
 import { useConfirmationModal } from "@stores/modalStore";
+import dayjs from "dayjs";
 import type { UseFormReset } from "react-hook-form";
 import type { TableContentType } from "types/pageType";
 
@@ -27,6 +28,23 @@ const useTaskController = () => {
 						content: [
 							{ label: item.title, flex: "flex-2", type: "text" },
 							{ label: item.description, flex: "flex-2", type: "text" },
+							{
+								label: dayjs(item.startDate, "YYYY-MM-DD").format(
+									"DD MMM YYYY"
+								),
+								flex: "flex-1",
+								type: "text",
+							},
+							{
+								label: dayjs(item.endDate, "YYYY-MM-DD").format("DD MMM YYYY"),
+								flex: "flex-1",
+								type: "text",
+							},
+							{
+								label: item.pic,
+								flex: "flex-1",
+								type: "text",
+							},
 							{
 								label: item.status ? "Selesai" : "Berlangsung",
 								flex: "flex-1",

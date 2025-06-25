@@ -18,10 +18,11 @@ const FormModal = () => {
 				<ModalContainer>
 					<motion.form
 						onSubmit={handleSubmit((data) => {
+							console.log(data);
 							if (formModal.data && formModal.data.onSubmit)
 								formModal.data.onSubmit({ body: data, reset });
 						})}
-						className="w-[395px] bg-neutral-0 rounded-lg"
+						className="w-[395px] max-h-[calc(100dvh-100px)] bg-neutral-0 rounded-lg"
 						initial={{ opacity: 0, scale: 0.5 }}
 						animate={{ opacity: 1, scale: 1 }}
 						exit={{ opacity: 0, scale: 0.5 }}
@@ -34,21 +35,26 @@ const FormModal = () => {
 							}}
 						/>
 
-						<div className="py-sm px-[36px]">
-							<Form formData={formModal.data?.inputs ?? []} control={control} />
-						</div>
+						<div className="scrollable overflow-auto">
+							<div className="py-sm px-[36px]">
+								<Form
+									formData={formModal.data?.inputs ?? []}
+									control={control}
+								/>
+							</div>
 
-						<ModalFooter
-							buttonData={{
-								label: "Tambah",
-								color: "bg-primary-900",
-								hover: "bg-primary-700",
-							}}
-							onClose={() => {
-								formModal.hideModal();
-								reset();
-							}}
-						/>
+							<ModalFooter
+								buttonData={{
+									label: "Tambah",
+									color: "bg-primary-900",
+									hover: "bg-primary-700",
+								}}
+								onClose={() => {
+									formModal.hideModal();
+									reset();
+								}}
+							/>
+						</div>
 					</motion.form>
 				</ModalContainer>
 			)}

@@ -16,7 +16,12 @@ export const getTasks = async (): Promise<ResType<TaskDTO[]>> => {
 
 export const addTask = async (body: AddTaskInput): Promise<ResType> => {
 	try {
-		const response = await axiosInstance.post(API_ENDPOINT.getTasks, body);
+		const mapBody = {
+			...body,
+			pic: body.pic ? body.pic.label : null,
+		};
+
+		const response = await axiosInstance.post(API_ENDPOINT.getTasks, mapBody);
 
 		return response.data as ResType;
 	} catch (error) {

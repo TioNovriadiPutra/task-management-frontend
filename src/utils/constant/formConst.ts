@@ -15,6 +15,26 @@ export const addTaskForm: FormType<AddTaskInput> = {
 			},
 		},
 		{
+			type: "date",
+			name: "startDate",
+			label: "Tanggal Mulai",
+			placeholder: "DD-MM-YYYY",
+			required: true,
+			rules: {
+				required: "Tanggal mulai harus diisi!",
+			},
+		},
+		{
+			type: "date",
+			name: "endDate",
+			label: "Tanggal Berakhir",
+			placeholder: "DD-MM-YYYY",
+			required: true,
+			rules: {
+				required: "Tanggal berakhir harus diisi!",
+			},
+		},
+		{
 			type: "textarea",
 			name: "description",
 			label: "Deskripsi",
@@ -24,9 +44,27 @@ export const addTaskForm: FormType<AddTaskInput> = {
 				required: "Deskripsi harus diisi!",
 			},
 		},
+		{
+			type: "combo",
+			name: "pic",
+			label: "PIC",
+			placeholder: "Pilih PIC",
+			required: true,
+			items: [
+				{ label: "Tio", value: "tio" },
+				{ label: "Novriadi", value: "novriadi" },
+				{ label: "Putra", value: "putra" },
+			],
+			rules: {
+				required: "PIC harus dipilih!",
+			},
+		},
 	],
 	defaultValues: {
 		title: "",
+		startDate: "",
+		endDate: "",
 		description: "",
+		pic: null,
 	},
 };
